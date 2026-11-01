@@ -1,25 +1,22 @@
-GVP WATCH — Smart Waste Monitoring Demo
-=========================================
+GVP WATCH — DEMO PORTAL BUNDLE
 
-This is a front-end college project prototype for problem statement PS000058.
+Files:
+- index.html: new landing page with links to all three portals
+- admin.html: original GVP Smart Monitoring admin dashboard
+- citizen.html: citizen issue reporting and complaint tracking
+- cleaning-crew.html: cleaning task list and work update portal
 
-HOW TO RUN
-1. Extract the ZIP file.
-2. Open the extracted GVP_Smart_Monitoring_Demo folder.
-3. Double-click index.html.
-4. It opens in Chrome, Edge, or Firefox. Internet is not required.
+GitHub Pages deployment:
+1. Extract this ZIP file.
+2. Open your existing GitHub repository.
+3. Upload all four HTML files to the repository's root (same folder).
+4. Keep index.html as the homepage. It is now the landing page.
+5. The previous admin dashboard is available at /admin.html.
+6. Enable GitHub Pages in Settings > Pages if it is not already enabled.
 
-DEMO FEATURES
-- Monitoring overview and sample KPIs
-- Simulated CCTV preview panels
-- Illustrative GVP hotspot map and register
-- Incident detection table with status update buttons
-- Fictional ANPR vehicle records
-- Reports and sample weekly chart
-- Simulate detection button
-- CSV export buttons
+Demo limitations:
+All three portals are front-end demonstrations using sample data. Their forms and status updates are not connected to one another, a shared database, live cameras, municipal staff or notification services. A production system needs a secure backend, authentication, role-based access and secure media storage.
 
-IMPORTANT
-This is a front-end demonstration only. It does NOT connect to live CCTV, run an AI/computer-vision model, perform real ANPR, issue legal fines, or save records to a database. All sample locations, vehicle plates, incidents, and metrics are fictional. The map is illustrative and not a real GIS map.
 
-For your college presentation, explain that the proposed full system would need CCTV integration, a trained computer-vision model, ANPR, a secure backend/database, and human review before enforcement.
+SIGN-IN PROMPT
+Clicking any portal card (or the control-room shortcut) opens a User ID and Password prompt before navigating to that portal. This is only a front-end demo gate: any non-empty ID/password will continue. It does NOT authenticate users, store accounts, or secure the portal files. For real login security, connect the portals to a backend authentication service and protect each portal route.
