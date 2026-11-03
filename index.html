@@ -42,12 +42,33 @@ footer{background:var(--ink);color:#c8cde3;padding:28px max(5vw,24px);display:fl
 @keyframes loginPop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.login-backdrop.open,.login-panel{animation:none}}
 
+
+.info-section{padding:76px max(5vw,24px);max-width:1320px;margin:auto}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.info-card{background:#fff;border:1px solid #e6e8f0;border-radius:18px;padding:27px;box-shadow:0 12px 34px rgba(27,37,89,.06)}
+.info-card h3{font-size:21px;color:#1b2559;margin:8px 0}.info-card p,.info-card li{font-size:13px;color:#707995;line-height:1.7}
+.info-kicker{font-size:10px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:#1f9d6b}
+.bin-stage{margin-top:18px;min-height:230px;border-radius:15px;background:linear-gradient(145deg,#edf6f2,#f7f8fc);display:grid;place-items:center;position:relative;overflow:hidden;cursor:pointer;outline:none}
+.smart-bin{width:112px;height:128px;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.bin-body{width:94px;height:105px;background:linear-gradient(90deg,#273b4b,#425d6b 50%,#243847);border-radius:9px 9px 18px 18px;position:relative;box-shadow:0 12px 20px #263b4b30}
+.bin-body:before{content:"♻";position:absolute;inset:0;display:grid;place-items:center;color:#a8e3ce;font-size:35px}
+.bin-lid{position:absolute;z-index:2;top:6px;left:4px;width:104px;height:17px;border-radius:7px;background:#152b3a;transform-origin:12px 12px;transition:transform .35s ease}
+.bin-stage.open .bin-lid,.bin-stage:hover .bin-lid,.bin-stage:focus .bin-lid{transform:rotate(-38deg) translateY(-9px)}
+.bin-sensor{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:#1f9d6b;box-shadow:0 0 0 7px #1f9d6b22}
+.bin-status{position:absolute;bottom:13px;left:14px;right:14px;text-align:center;font-size:11px;font-weight:750;color:#1b2559}
+.bin-stage.open .bin-status{color:#16865a}
+.bin-hint{font-size:11px;color:#7a829b;text-align:center;margin:10px 0 0}
+.bin-features{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
+.bin-feature{padding:12px 10px;background:#f7f8fc;border-radius:10px;text-align:center;font-size:11px;color:#48516f}
+.bin-feature b{display:block;color:#1b2559;font-size:12px;margin-bottom:4px}
+@media(max-width:760px){.info-grid{grid-template-columns:1fr}.info-section{padding:55px 20px}.bin-features{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <header>
   <a class="brand" href="index.html" aria-label="GVP Watch home"><span class="mark">G</span><span><b>GVP WATCH</b><small>SMART CITY • GMC</small></span></a>
-  <nav class="nav" aria-label="Main navigation"><a href="#portals">Explore portals</a><a href="#about">About this demo</a><a class="nav-cta" href="#portals">Open a portal <span>↗</span></a></nav>
+  <nav class="nav" aria-label="Main navigation"><a href="#portals">Explore portals</a><a href="#information">Information</a><a href="#about">About this demo</a><a class="nav-cta" href="#portals">Open a portal <span>↗</span></a></nav>
 </header>
 <main>
 <section class="hero">
@@ -77,6 +98,22 @@ footer{background:var(--ink);color:#c8cde3;padding:28px max(5vw,24px);display:fl
     <a class="portal reveal" href="cleaning-crew.html"><div class="portal-icon">✓</div><h3>Cleaning Crew Portal</h3><p>Review assigned cleaning tasks, update work status and explore the sample work history.</p><span class="portal-link">Open crew portal <span>→</span></span></a>
   </div>
 </section>
+
+<section class="info-section" id="information">
+ <div class="section-head reveal"><div class="eyebrow">Know the solution</div><h2>How GVP Watch helps build a cleaner city</h2><p>A connected approach to reporting, monitoring and managing public waste concerns.</p></div>
+ <div class="info-grid">
+  <article class="info-card reveal"><div class="info-kicker">About GVP Watch</div><h3>One platform for cleaner public spaces</h3><p>GVP Watch is a smart waste-management prototype designed to connect citizens, municipal administrators and cleaning crews. Citizens can report sanitation concerns, administrators can review sample incidents and hotspots, and field teams can view and update assigned cleaning tasks.</p><ul><li>Citizen reporting and complaint tracking</li><li>Central monitoring of sample incidents and hotspots</li><li>Cleaning task assignment and work-status updates</li></ul></article>
+  <article class="info-card reveal"><div class="info-kicker">Smart Dustbin</div><h3>A bin that responds when you approach</h3><p>The concept uses a proximity sensor to detect a person nearby and automatically open the lid, helping people dispose of waste without touching the bin.</p>
+   <div class="bin-stage" id="smartBin" tabindex="0" role="button" aria-label="Approach the smart dustbin to open its lid">
+    <div class="smart-bin"><span class="bin-sensor"></span><div class="bin-lid"></div><div class="bin-body"></div></div>
+    <div class="bin-status" id="binStatus">Approach the bin to open the lid</div>
+   </div>
+   <p class="bin-hint">Move your pointer close to the bin, hover over it, or tap it on a touchscreen to try the demo.</p>
+   <div class="bin-features"><div class="bin-feature"><b>Proximity sensor</b>Detects nearby users</div><div class="bin-feature"><b>Automatic lid</b>Opens without touch</div><div class="bin-feature"><b>Hygienic disposal</b>Encourages cleaner use</div></div>
+  </article>
+ </div>
+</section>
+
 <div class="note reveal" id="about"><span class="note-icon">ⓘ</span><div><strong>Prototype demonstration</strong><br>These portals use illustrative sample data. Forms and status updates run in the browser only; the pages are not connected to a shared database, live cameras, municipal staff or a notification service.</div></div>
 </main>
 
@@ -135,5 +172,66 @@ loginForm.addEventListener('submit',event=>{
 });
 
 </script>
+
+<script>
+(function(){
+ const stage=document.getElementById('smartBin');if(!stage)return;
+ const status=document.getElementById('binStatus');let closeTimer;
+ function setOpen(open){stage.classList.toggle('open',open);const lang=localStorage.getItem('gvp-watch-language')||'en';const msg=lang==='hi'?{open:'ढक्कन खुला है — कचरा डालें',closed:'ढक्कन खोलने के लिए डस्टबिन के पास आएँ'}:lang==='gu'?{open:'ઢાંકણ ખુલ્લું છે — કચરો નાખો',closed:'ઢાંકણ ખોલવા ડસ્ટબિનની નજીક જાઓ'}:{open:'Lid open — dispose of waste',closed:'Approach the bin to open the lid'};status.textContent=open?msg.open:msg.closed;}
+ stage.addEventListener('pointerenter',()=>{clearTimeout(closeTimer);setOpen(true)});
+ stage.addEventListener('pointerleave',()=>{closeTimer=setTimeout(()=>setOpen(false),700)});
+ stage.addEventListener('focus',()=>setOpen(true));
+ stage.addEventListener('blur',()=>setOpen(false));
+ stage.addEventListener('click',()=>setOpen(!stage.classList.contains('open')));
+ stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setOpen(!stage.classList.contains('open'))}});
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{if(entries[0].isIntersecting)stage.classList.add('nearby')},{rootMargin:'80px'});io.observe(stage)}
+})();
+</script>
+
+
+<script>
+/* GVP Watch shared language selector: preference is saved across all portal pages. */
+(function(){
+ const labels={en:"Language",hi:"भाषा",gu:"ભાષા"};
+ const translations={
+ hi:{
+ "Explore portals":"पोर्टल देखें","About this demo":"इस डेमो के बारे में","Open a portal":"पोर्टल खोलें","Gandhidham Municipal Corporation":"गांधीधाम नगर निगम","A cleaner city.":"स्वच्छ शहर।","A smarter way to work.":"काम करने का स्मार्ट तरीका।","One connected vision for smarter waste monitoring — bringing municipal teams, field crews and citizens into one simple digital experience.":"स्मार्ट कचरा निगरानी के लिए एक साझा पहल — नगर निगम, सफाई कर्मचारियों और नागरिकों को एक सरल डिजिटल अनुभव से जोड़ना।","Explore demo portals":"डेमो पोर्टल देखें","View control room":"कंट्रोल रूम देखें","Choose your workspace":"अपना कार्यक्षेत्र चुनें","Three portals. One cleaner Gandhidham.":"तीन पोर्टल। स्वच्छ गांधीधाम।","Open the experience that matches your role and explore the key features of the GVP Watch demo.":"अपनी भूमिका के अनुसार पोर्टल खोलें और GVP Watch डेमो की सुविधाएँ देखें।","Admin Control Room":"प्रशासन नियंत्रण कक्ष","Monitor dumping incidents, review hotspots, explore vehicle records and view sample analytics.":"कचरा फेंकने की घटनाओं, संवेदनशील स्थानों, वाहन रिकॉर्ड और विश्लेषण की निगरानी करें।","Open admin portal":"एडमिन पोर्टल खोलें","Citizen Portal":"नागरिक पोर्टल","Submit a waste or sanitation complaint, add a location and track its progress in the demo.":"कचरे या सफाई से जुड़ी शिकायत दर्ज करें, स्थान जोड़ें और उसकी स्थिति देखें।","Open citizen portal":"नागरिक पोर्टल खोलें","Cleaning Crew Portal":"सफाई कर्मचारी पोर्टल","Review assigned cleaning tasks, update work status and explore the sample work history.":"सौंपे गए सफाई कार्य देखें, स्थिति अपडेट करें और कार्य इतिहास देखें।","Open crew portal":"कर्मचारी पोर्टल खोलें","Prototype demonstration":"प्रोटोटाइप प्रदर्शन","These portals use illustrative sample data. Forms and status updates run in the browser only; the pages are not connected to a shared database, live cameras, municipal staff or a notification service.":"इन पोर्टलों में उदाहरण के लिए नमूना डेटा है। फॉर्म और स्थिति अपडेट केवल ब्राउज़र में चलते हैं; ये साझा डेटाबेस, लाइव कैमरे, नगर निगम कर्मचारियों या सूचना सेवा से जुड़े नहीं हैं।","Portal sign in":"पोर्टल में साइन इन","Enter your portal ID and password to continue.":"आगे बढ़ने के लिए पोर्टल आईडी और पासवर्ड दर्ज करें।","User ID":"यूज़र आईडी","Password":"पासवर्ड","Enter your ID":"अपनी आईडी दर्ज करें","Enter your password":"अपना पासवर्ड दर्ज करें","Continue to portal":"पोर्टल पर जाएँ","Monitor":"निगरानी","Respond":"कार्रवाई","Improve":"सुधार","Smart waste monitoring · Gandhidham Municipal Corporation":"स्मार्ट कचरा निगरानी · गांधीधाम नगर निगम","Demo interface · Sample data only":"डेमो इंटरफ़ेस · केवल नमूना डेटा",
+ "Overview":"अवलोकन","Incident Detection":"घटना पहचान","GVP Hotspots":"GVP संवेदनशील स्थान","Vehicle Records":"वाहन रिकॉर्ड","Reports & Analytics":"रिपोर्ट और विश्लेषण","Demo Settings":"डेमो सेटिंग्स","Monitoring Overview":"निगरानी का अवलोकन","Citizen Dashboard":"नागरिक डैशबोर्ड","My Dashboard":"मेरा डैशबोर्ड","Report an Issue":"समस्या दर्ज करें","Track Complaint":"शिकायत ट्रैक करें","My complaints":"मेरी शिकायतें","Under action":"कार्रवाई जारी","Resolved":"हल की गई","Quick report":"त्वरित शिकायत","Issue type":"समस्या का प्रकार","Select issue":"समस्या चुनें","Location / landmark":"स्थान / पहचान स्थल","Description":"विवरण","Photo (optional)":"फोटो (वैकल्पिक)","Mobile number (optional)":"मोबाइल नंबर (वैकल्पिक)","Submit complaint":"शिकायत जमा करें","How it works":"यह कैसे काम करता है","Submit a report":"रिपोर्ट जमा करें","Municipal review":"नगर निगम द्वारा समीक्षा","Cleaning and verification":"सफाई और सत्यापन","Track the result":"परिणाम ट्रैक करें","My recent complaints":"मेरी हाल की शिकायतें","Search":"खोजें","Today's task list":"आज के कार्य","Task update":"कार्य अपडेट","Update status":"स्थिति अपडेट करें","Work note / issue":"कार्य नोट / समस्या","Save work update":"कार्य अपडेट सहेजें","Work update history":"कार्य अपडेट इतिहास","My Assigned Tasks":"मुझे सौंपे गए कार्य","Assigned tasks":"सौंपे गए कार्य","Pending":"लंबित","Completed":"पूरा हुआ","High":"उच्च","Medium":"मध्यम","In Progress":"प्रगति पर","Blocked / Need support":"अवरुद्ध / सहायता चाहिए","Cleaning Crew Portal":"सफाई कर्मचारी पोर्टल","Sanitary Control Room":"स्वच्छता नियंत्रण कक्ष","Public access":"सार्वजनिक पहुँच","Field Operations":"मैदानी कार्य","Daily cleaning workspace":"दैनिक सफाई कार्यक्षेत्र","Know the solution":"समाधान को जानें","How GVP Watch helps build a cleaner city":"GVP Watch स्वच्छ शहर बनाने में कैसे मदद करता है","A connected approach to reporting, monitoring and managing public waste concerns.":"सार्वजनिक कचरे की समस्याओं की रिपोर्टिंग, निगरानी और प्रबंधन का एक जुड़ा हुआ तरीका।","About GVP Watch":"GVP Watch के बारे में","One platform for cleaner public spaces":"स्वच्छ सार्वजनिक स्थानों के लिए एक मंच","GVP Watch is a smart waste-management prototype designed to connect citizens, municipal administrators and cleaning crews. Citizens can report sanitation concerns, administrators can review sample incidents and hotspots, and field teams can view and update assigned cleaning tasks.":"GVP Watch एक स्मार्ट कचरा-प्रबंधन प्रोटोटाइप है, जो नागरिकों, नगर निगम प्रशासकों और सफाई कर्मचारियों को जोड़ता है। नागरिक सफाई संबंधी समस्याएँ दर्ज कर सकते हैं, प्रशासक घटनाओं और हॉटस्पॉट की समीक्षा कर सकते हैं और कर्मचारी सौंपे गए कार्य अपडेट कर सकते हैं।","Citizen reporting and complaint tracking":"नागरिक रिपोर्टिंग और शिकायत ट्रैकिंग","Central monitoring of sample incidents and hotspots":"घटनाओं और हॉटस्पॉट की केंद्रीय निगरानी","Cleaning task assignment and work-status updates":"सफाई कार्य सौंपना और स्थिति अपडेट","Smart Dustbin":"स्मार्ट डस्टबिन","A bin that responds when you approach":"आपके पास आने पर खुलने वाला डस्टबिन","The concept uses a proximity sensor to detect a person nearby and automatically open the lid, helping people dispose of waste without touching the bin.":"यह अवधारणा पास आने वाले व्यक्ति को पहचानने के लिए प्रॉक्सिमिटी सेंसर का उपयोग करती है और ढक्कन अपने आप खोलती है, जिससे बिना छुए कचरा डालना आसान होता है।","Approach the bin to open the lid":"ढक्कन खोलने के लिए डस्टबिन के पास आएँ","Move your pointer close to the bin, hover over it, or tap it on a touchscreen to try the demo.":"डेमो देखने के लिए पॉइंटर को डस्टबिन के पास ले जाएँ, उस पर रखें या टचस्क्रीन पर टैप करें।","Proximity sensor":"प्रॉक्सिमिटी सेंसर","Detects nearby users":"पास के लोगों को पहचानता है","Automatic lid":"स्वचालित ढक्कन","Opens without touch":"बिना छुए खुलता है","Hygienic disposal":"स्वच्छ तरीके से कचरा डालना","Encourages cleaner use":"स्वच्छ उपयोग को बढ़ावा देता है","Lid open — dispose of waste":"ढक्कन खुला है — कचरा डालें"
+ },
+ gu:{
+ "Explore portals":"પોર્ટલ જુઓ","About this demo":"આ ડેમો વિશે","Open a portal":"પોર્ટલ ખોલો","Gandhidham Municipal Corporation":"ગાંધીધામ મહાનગરપાલિકા","A cleaner city.":"સ્વચ્છ શહેર.","A smarter way to work.":"કામ કરવાની વધુ સ્માર્ટ રીત.","One connected vision for smarter waste monitoring — bringing municipal teams, field crews and citizens into one simple digital experience.":"સ્માર્ટ કચરા દેખરેખ માટે એક સંયુક્ત પહેલ — મહાનગરપાલિકા, સફાઈ કર્મચારીઓ અને નાગરિકોને સરળ ડિજિટલ અનુભવ સાથે જોડે છે.","Explore demo portals":"ડેમો પોર્ટલ જુઓ","View control room":"કંટ્રોલ રૂમ જુઓ","Choose your workspace":"તમારું કાર્યક્ષેત્ર પસંદ કરો","Three portals. One cleaner Gandhidham.":"ત્રણ પોર્ટલ. સ્વચ્છ ગાંધીધામ.","Open the experience that matches your role and explore the key features of the GVP Watch demo.":"તમારી ભૂમિકા મુજબ પોર્ટલ ખોલો અને GVP Watch ડેમોની સુવિધાઓ જુઓ.","Admin Control Room":"એડમિન કંટ્રોલ રૂમ","Monitor dumping incidents, review hotspots, explore vehicle records and view sample analytics.":"કચરો ફેંકવાની ઘટનાઓ, હોટસ્પોટ, વાહન રેકોર્ડ અને વિશ્લેષણ જુઓ.","Open admin portal":"એડમિન પોર્ટલ ખોલો","Citizen Portal":"નાગરિક પોર્ટલ","Submit a waste or sanitation complaint, add a location and track its progress in the demo.":"કચરા અથવા સ્વચ્છતા અંગે ફરિયાદ નોંધાવો, સ્થળ ઉમેરો અને તેની સ્થિતિ જુઓ.","Open citizen portal":"નાગરિક પોર્ટલ ખોલો","Cleaning Crew Portal":"સફાઈ કર્મચારી પોર્ટલ","Review assigned cleaning tasks, update work status and explore the sample work history.":"સોંપાયેલ સફાઈનાં કામ જુઓ, સ્થિતિ અપડેટ કરો અને કામનો ઇતિહાસ જુઓ.","Open crew portal":"કર્મચારી પોર્ટલ ખોલો","Prototype demonstration":"પ્રોટોટાઇપ પ્રદર્શન","These portals use illustrative sample data. Forms and status updates run in the browser only; the pages are not connected to a shared database, live cameras, municipal staff or a notification service.":"આ પોર્ટલમાં ઉદાહરણરૂપ નમૂનાનો ડેટા છે. ફોર્મ અને સ્થિતિના અપડેટ માત્ર બ્રાઉઝરમાં ચાલે છે; પેજ શેર કરેલા ડેટાબેઝ, લાઇવ કેમેરા, પાલિકાના કર્મચારીઓ કે સૂચના સેવા સાથે જોડાયેલા નથી.","Portal sign in":"પોર્ટલમાં સાઇન ઇન","Enter your portal ID and password to continue.":"આગળ વધવા માટે પોર્ટલ ID અને પાસવર્ડ દાખલ કરો.","User ID":"યુઝર ID","Password":"પાસવર્ડ","Enter your ID":"તમારું ID દાખલ કરો","Enter your password":"તમારો પાસવર્ડ દાખલ કરો","Continue to portal":"પોર્ટલ પર જાઓ","Monitor":"નિરીક્ષણ","Respond":"કાર્યવાહી","Improve":"સુધારો","Smart waste monitoring · Gandhidham Municipal Corporation":"સ્માર્ટ કચરા દેખરેખ · ગાંધીધામ મહાનગરપાલિકા","Demo interface · Sample data only":"ડેમો ઇન્ટરફેસ · માત્ર નમૂનાનો ડેટા",
+ "Overview":"ઝાંખી","Incident Detection":"ઘટના શોધ","GVP Hotspots":"GVP હોટસ્પોટ","Vehicle Records":"વાહન રેકોર્ડ","Reports & Analytics":"અહેવાલ અને વિશ્લેષણ","Demo Settings":"ડેમો સેટિંગ્સ","Monitoring Overview":"નિરીક્ષણની ઝાંખી","Citizen Dashboard":"નાગરિક ડેશબોર્ડ","My Dashboard":"મારું ડેશબોર્ડ","Report an Issue":"સમસ્યાની જાણ કરો","Track Complaint":"ફરિયાદ ટ્રૅક કરો","My complaints":"મારી ફરિયાદો","Under action":"કાર્યવાહી હેઠળ","Resolved":"ઉકેલાઈ","Quick report":"ઝડપી ફરિયાદ","Issue type":"સમસ્યાનો પ્રકાર","Select issue":"સમસ્યા પસંદ કરો","Location / landmark":"સ્થળ / નિશાની","Description":"વર્ણન","Photo (optional)":"ફોટો (વૈકલ્પિક)","Mobile number (optional)":"મોબાઇલ નંબર (વૈકલ્પિક)","Submit complaint":"ફરિયાદ સબમિટ કરો","How it works":"તે કેવી રીતે કાર્ય કરે છે","Submit a report":"રિપોર્ટ સબમિટ કરો","Municipal review":"પાલિકા સમીક્ષા","Cleaning and verification":"સફાઈ અને ચકાસણી","Track the result":"પરિણામ ટ્રૅક કરો","My recent complaints":"મારી તાજેતરની ફરિયાદો","Search":"શોધો","Today's task list":"આજનાં કામ","Task update":"કામનું અપડેટ","Update status":"સ્થિતિ અપડેટ કરો","Work note / issue":"કામની નોંધ / સમસ્યા","Save work update":"કામનું અપડેટ સાચવો","Work update history":"કામના અપડેટનો ઇતિહાસ","My Assigned Tasks":"મને સોંપાયેલાં કામ","Assigned tasks":"સોંપાયેલાં કામ","Pending":"બાકી","Completed":"પૂર્ણ","High":"ઊંચી","Medium":"મધ્યમ","In Progress":"ચાલુ","Blocked / Need support":"અટકેલું / મદદ જોઈએ","Sanitary Control Room":"સ્વચ્છતા કંટ્રોલ રૂમ","Public access":"જાહેર પ્રવેશ","Field Operations":"ક્ષેત્ર કામગીરી","Daily cleaning workspace":"દૈનિક સફાઈ કાર્યસ્થળ","Know the solution":"ઉકેલને જાણો","How GVP Watch helps build a cleaner city":"GVP Watch સ્વચ્છ શહેર બનાવવામાં કેવી રીતે મદદ કરે છે","A connected approach to reporting, monitoring and managing public waste concerns.":"જાહેર કચરાની સમસ્યાઓની જાણ, દેખરેખ અને વ્યવસ્થાપન માટેની સંકલિત રીત.","About GVP Watch":"GVP Watch વિશે","One platform for cleaner public spaces":"સ્વચ્છ જાહેર સ્થળો માટે એક મંચ","GVP Watch is a smart waste-management prototype designed to connect citizens, municipal administrators and cleaning crews. Citizens can report sanitation concerns, administrators can review sample incidents and hotspots, and field teams can view and update assigned cleaning tasks.":"GVP Watch એ નાગરિકો, મહાનગરપાલિકાના સંચાલકો અને સફાઈ કર્મચારીઓને જોડવા માટે બનાવેલો સ્માર્ટ કચરા વ્યવસ્થાપન પ્રોટોટાઇપ છે. નાગરિકો સફાઈ સંબંધિત સમસ્યાઓ નોંધાવી શકે છે, સંચાલકો ઘટનાઓ અને હોટસ્પોટની સમીક્ષા કરી શકે છે અને કર્મચારીઓ સોંપાયેલા કામ અપડેટ કરી શકે છે.","Citizen reporting and complaint tracking":"નાગરિક રિપોર્ટિંગ અને ફરિયાદ ટ્રેકિંગ","Central monitoring of sample incidents and hotspots":"ઘટનાઓ અને હોટસ્પોટનું કેન્દ્રીય નિરીક્ષણ","Cleaning task assignment and work-status updates":"સફાઈનાં કામ સોંપવા અને સ્થિતિ અપડેટ","Smart Dustbin":"સ્માર્ટ ડસ્ટબિન","A bin that responds when you approach":"નજીક જતાં આપમેળે ખુલતું ડસ્ટબિન","The concept uses a proximity sensor to detect a person nearby and automatically open the lid, helping people dispose of waste without touching the bin.":"આ વિચાર નજીક આવતી વ્યક્તિને ઓળખવા માટે પ્રોક્સિમિટી સેન્સરનો ઉપયોગ કરે છે અને ઢાંકણ આપમેળે ખોલે છે, જેથી ડબ્બાને સ્પર્શ કર્યા વિના કચરો નાખી શકાય.","Approach the bin to open the lid":"ઢાંકણ ખોલવા ડસ્ટબિનની નજીક જાઓ","Move your pointer close to the bin, hover over it, or tap it on a touchscreen to try the demo.":"ડેમો અજમાવવા પોઇન્ટરને ડસ્ટબિનની નજીક લઈ જાઓ, તેના પર રાખો અથવા ટચસ્ક્રીન પર ટેપ કરો.","Proximity sensor":"પ્રોક્સિમિટી સેન્સર","Detects nearby users":"નજીકના લોકોને ઓળખે છે","Automatic lid":"આપમેળે ખુલતું ઢાંકણ","Opens without touch":"સ્પર્શ કર્યા વિના ખુલે છે","Hygienic disposal":"સ્વચ્છ રીતે કચરો નાખવો","Encourages cleaner use":"સ્વચ્છ ઉપયોગને પ્રોત્સાહન આપે છે","Lid open — dispose of waste":"ઢાંકણ ખુલ્લું છે — કચરો નાખો"
+ }};
+ const key="gvp-watch-language";
+ function addSelector(){
+   if(document.getElementById("gvpLanguage")) return;
+   const host=document.querySelector(".topright")||document.querySelector("header .nav")||document.querySelector("header");
+   if(!host)return;
+   const wrap=document.createElement("label");wrap.className="gvp-language-wrap";
+   wrap.innerHTML='<span class="gvp-language-label">Language</span><select id="gvpLanguage" aria-label="Select language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="gu">ગુજરાતી</option></select>';
+   host.appendChild(wrap);
+   const saved=localStorage.getItem(key)||"en";
+   wrap.querySelector("select").value=saved;
+   wrap.querySelector("select").addEventListener("change",e=>{localStorage.setItem(key,e.target.value);location.reload()});
+ }
+ function translate(){
+   const lang=localStorage.getItem(key)||"en"; if(lang==="en")return;
+   const dict=translations[lang]||{};
+   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+   const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+   nodes.forEach(n=>{const raw=n.nodeValue;const trimmed=raw.trim();if(dict[trimmed])n.nodeValue=raw.replace(trimmed,dict[trimmed])});
+   document.querySelectorAll("[placeholder],[aria-label]").forEach(el=>{
+     ["placeholder","aria-label"].forEach(a=>{const v=el.getAttribute(a);if(dict[v])el.setAttribute(a,dict[v])});
+   });
+   document.documentElement.lang=lang;
+   const select=document.getElementById("gvpLanguage");if(select)select.value=lang;
+   const label=document.querySelector(".gvp-language-label");if(label)label.textContent=labels[lang];
+ }
+ const style=document.createElement("style");style.textContent='.gvp-language-wrap{display:flex;align-items:center;gap:7px;font-size:11px;color:#657487;white-space:nowrap}.gvp-language-wrap select{border:1px solid #dfe5e9;border-radius:8px;background:#fff;padding:8px 9px;color:#263748;font:inherit;cursor:pointer;max-width:125px}.topbar .gvp-language-wrap{margin-left:auto}.nav .gvp-language-wrap{margin-left:5px}@media(max-width:700px){.gvp-language-label{display:none}.gvp-language-wrap select{padding:7px 5px;max-width:94px}}';
+ document.head.appendChild(style);
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>{addSelector();translate()});else{addSelector();translate()}
+})();
+</script>
+
 </body>
 </html>

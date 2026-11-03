@@ -20,3 +20,12 @@ All three portals are front-end demonstrations using sample data. Their forms an
 
 SIGN-IN PROMPT
 Clicking any portal card (or the control-room shortcut) opens a User ID and Password prompt before navigating to that portal. This is only a front-end demo gate: any non-empty ID/password will continue. It does NOT authenticate users, store accounts, or secure the portal files. For real login security, connect the portals to a backend authentication service and protect each portal route.
+
+
+NEW FEATURES
+- Landing page includes an Information section explaining GVP Watch and the Smart Dustbin concept.
+- Smart Dustbin demo lid opens on pointer approach/hover, keyboard focus, or touch/click. This is a visual prototype only; it does not connect to a physical proximity sensor.
+- English, Hindi and Gujarati language selector is available on all four pages. The selected language is saved in this browser and reused when navigating between pages.
+- Some sample/dynamically generated records may remain in English because this is a front-end prototype with a built-in phrase dictionary.
+
+To deploy, upload index.html, admin.html, citizen.html and cleaning-crew.html together to the repository root.
